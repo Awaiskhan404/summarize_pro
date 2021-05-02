@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Dashboard{% endblock %}
+{% block header %}
+<!--HERO CONTENT ****************************************************************************************-->
+            <div class="container align-self-center align-items-center text-center">
+                <h1>Client Dashbaord</h1>
+            </div>
+            <!--end container-->
+
+            <div class="ts-background" data-bg-color="#000" data-bg-parallax="scroll" data-bg-parallax-speed="3">
+                <div class="owl-carousel ts-hero-slider ts-parallax-element" data-owl-loop="1" data-owl-fadeout="1">
+                    <div class="ts-background-image ts-opacity__70" data-bg-image="{% static 'assets/img/bg-girl.jpg' %}"></div>
+                </div>
+            </div>
+{% endblock %}
+
+
+{% block content %}
+
+<section style="margin-bottom: 700px;">
+<div class="container">
+<div class="text-center">
+<h1>PDF Summary</h1><br>
+
+{% for listviewpdf in object_list %}
+{% if listviewpdf.email == user.email %}
+{% block card %}
+<div class="card" style="width: 14rem; float: left; height: 27rem; margin: 12px; margin-bottom: 70px;">
+  <img src="https://icon-library.com/images/download-pdf-icon-png/download-pdf-icon-png-21.jpg" class="card-img-top"
+    alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{ listviewpdf.name }}</h5>
+    <p class="card-text">Number of pages: {{ listviewpdf.number_page }}</p>
+    {% if listviewpdf.is_paid%}
+    <p class="card-text">PAID</p>
+    {% elif listviewpdf.is_complete %}
+    <a href="media/{{listviewpdf.pdffile}}" target="_blank" class="btn btn-primary">Download</a>
+    {% else %}
+    <p class="card-text">UNPAID</p>
+    <p class="card-text">$ {{listviewpdf.total_price}} </p>
+    <a href="{{listviewpdf.slug}}" class="btn btn-primary">Pay Now</a>
+    {% endif %}
+{% endblock %}
+{% endif %}
+
+  </div>
+</div>
+
+
+{% endfor %}
+</div>
+</div>
+</section>
+
+
+
+<section style="margin-top: 1000px;" id="numbers" class="ts-block ts-background-is-dark ts-separate-bg-element" data-bg-image="{% static 'assets/img/bg-table.jpg' %}" data-bg-image-opacity=".5" data-bg-color="#2d2d2d" data-mask-top-nw-color="#ffffff" data-mask-bottom-wn-color="#1f1f1f">
+    <div class="container">
+        <div class="ts-promo-numbers">
+            <div class="row">
+              
+                <div class="col-sm-12">
+                    <div class="ts-promo-number text-center">
+                        <h3>Need More PDF Summaries?</h3><br>
+<div class="label"><a href="/clientpage" class="btn btn-primary">Upload PDF</a></div>
+                        <span class="ts-promo-number-divider"></span>
+                    </div>
+                </div>
+                
+            </div>
+            <!--end row-->
+        </div>
+        <!--end ts-promo-numbers-->
+    </div>
+    <!--end container-->
+</section>
+{% endblock %}

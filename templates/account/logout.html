@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Exit{% endblock %}
+
+{% block header %}
+<!--HERO CONTENT ****************************************************************************************-->
+<div class="container align-self-center align-items-center text-center">
+    <h1>Logout</h1>
+    <h3>Are you sure you want to logout?</h3>
+    <a class="btn  btn-success" href="{% url 'contentlist' %}">Return To Dashboard</a>
+    <form method="post" action="{% url 'account_logout' %}">
+    {% csrf_token %}
+    <button class="btn btn-danger" type="submit">Exit</button>
+    </form>
+    <!--end container-->
+
+    <div class="ts-background" data-bg-color="#000" data-bg-parallax="scroll" data-bg-parallax-speed="3">
+        <div class="ts-background-image ts-opacity__70" data-bg-image="{% static 'assets/img/bg-girl.jpg' %}">
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block content %}
+
+    
+
+{% endblock %}
+
+<!-- i think i dont need to explain it to u... but.. 
+the csftoken is super important to secury of site so dont take it off
+also lest method=="post" it is how i get the responses....-->

@@ -1,0 +1,57 @@
+/*-------------------------------------------
+  -- SVG Shapes
+-------------------------------------------*/
+
+.ts-svg {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  top: 0;
+  z-index: -1;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  margin: auto;
+}
+
+.ts-shape-mask__nw-element {
+  position: absolute;
+  height: 180px;
+  width: 100%;
+}
+
+[class*="ts-mask-"] {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-size: contain;
+  background-repeat: no-repeat;
+  top: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.ts-block {
+  &[data-mask-top-nw-color], &[data-mask-top-wn-color] {
+    padding-top: 128px;
+    padding-top: 144px ?if media (min-width: 576px) and (max-width: 767px);
+    padding-top: 160px ?if media (min-width: 768px) and (max-width: 991px);
+    padding-top: 176px ?if media (min-width: 992px) and (max-width: 1199px);
+    padding-top: 192px ?if media (min-width: 1200px);
+  }
+  &[data-mask-bottom-nw-color], &[data-mask-bottom-wn-color] {
+    padding-bottom: 128px;
+    padding-bottom: 144px ?if media (min-width: 576px) and (max-width: 767px);
+    padding-bottom: 160px ?if media (min-width: 768px) and (max-width: 991px);
+    padding-bottom: 176px ?if media (min-width: 992px) and (max-width: 1199px);
+    padding-bottom: 192px ?if media (min-width: 1200px);
+  }
+}
+
+.ts-mask-top-nw, .ts-mask-top-wn {
+  background-position: top center;
+}
+.ts-mask-bottom-nw, .ts-mask-bottom-wn {
+  background-position: bottom center;
+}

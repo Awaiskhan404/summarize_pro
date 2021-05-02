@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Client{% endblock %}
+
+
+
+
+{% block header %}
+<!--HERO CONTENT ****************************************************************************************-->
+<div class="container align-self-center align-items-center text-center">
+    <h3 class="ts-opacity__50">Make Your Life Easy</h3>
+    <h1>Submit Your PDF Below</h1>
+</div>
+<!--end container-->
+
+<div class="ts-background" data-bg-color="#000" data-bg-parallax="scroll" data-bg-parallax-speed="3">
+    <div class="owl-carousel ts-hero-slider ts-parallax-element" data-owl-loop="1" data-owl-fadeout="1">
+        <div class="ts-background-image ts-opacity__70" data-bg-image="{% static 'assets/img/bg-girl.jpg' %}"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+
+
+
+  <!--WHAT YOU'LL GET *************************************************************************************-->
+  <section class="ts-block  pt-4" data-mask-bottom-wn-color="#1f1f1f">
+      <div class="container text-center">
+          <div class="ts-title">
+              <h2>Submit Your PDF</h2>
+          
+              <p>Submit your pdf below and we will email you within a few business days with your summary!</p>
+          </div>
+      <div class="mb-3">
+        <form enctype="multipart/form-data" method='post'>
+          {%csrf_token%}
+          <input class="form-control" type="file" id="formFile" name="pdf"><br>
+          <input class="btn btn-success btn-primary btn-lg ts-scroll" id="md-3" type="submit">
+        </form>
+      </div>
+      </div>
+  </section>
+
+
+{% else %}
+<meta http-equiv="refresh" content="time; URL=/" />
+{% endif %}
+
+
+{% endblock %}

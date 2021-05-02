@@ -1,0 +1,186 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="Horizon Development">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600">
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/font-awesome/css/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+	<title>{% block title %}{% endblock %}</title>
+
+</head>
+
+<body data-spy="scroll" data-target=".navbar" class="has-loading-screen">
+    <div class="ts-page-wrapper" id="page-top">
+
+        <!--*********************************************************************************************************-->
+        <!--************ HERO ***************************************************************************************-->
+        <!--*********************************************************************************************************-->
+        <header id="ts-hero" class="ts-full-screen ts-separate-bg-element" data-mask-bottom-wn-color="#fff" data-bg-image-opacity=".8" data-bg-parallax="scroll" data-bg-parallax-speed="3">
+            <link rel="icon" type="image/png" href="{% static 'assets/img/fav.png' %}"/>
+            <!--NAVIGATION ******************************************************************************************-->
+            <nav class="navbar navbar-expand-lg navbar-dark fixed-top ts-separate-bg-element in" data-bg-color="#1d1d1d">
+                <div class="container">
+                    <a class="navbar-brand" href="/">
+                        <img src="{% static 'assets/img/logo-w.png' %}" alt="">
+                    </a>
+                    <!--end navbar-brand-->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <!--end navbar-toggler-->
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav ml-auto">
+
+
+
+                            {% if user.is_authenticated %}
+                            <a class="nav-link" href="/clientpage">Send A PDF</a> 
+                            <a class="ts-scroll btn btn-outline-light btn-sm m-1 px-3 ts-width__auto" href="{% url 'contentlist' %}">Client Dashboard</a>
+                            <a class="ts-scroll btn btn-primary btn-sm m-1 px-3 ts-width__auto" href="{% url 'account_logout' %}">Log Out</a>
+                            
+                            {% else %}
+                            
+                            <a class="nav-item nav-link active ts-scroll" href="/">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-item nav-link ts-scroll" href="#advanced-features">Features</a>
+                            <a class="nav-item nav-link ts-scroll" href="#pricing">Pricing</a>
+                            <a class="nav-item nav-link ts-scroll" href="#form-contact">Contact</a>
+                            <a class="ts-scroll btn btn-outline-light btn-sm m-1 px-3 ts-width__auto" href="{% url 'account_login' %}">Login</a>
+                            <a class="ts-scroll btn btn-primary btn-sm m-1 px-3 ts-width__auto" href="{% url 'account_signup' %}">Sign up</a>
+                            
+                            {% endif %}
+                            
+                        </div>
+                        <!--end navbar-nav-->
+                    </div>
+                    <!--end collapse-->
+                </div>
+                <!--end container-->
+            </nav>
+            <!--end navbar-->
+            {% block header %}
+            {% endblock %}
+            
+
+        </header>
+        <!--end #hero-->
+
+
+        {% block content %}
+        {% endblock %}
+
+
+        <!--*********************************************************************************************************-->
+        <!--************ FOOTER *************************************************************************************-->
+        <!--*********************************************************************************************************-->
+        <footer id="ts-footer">
+            <section id="contact" class="ts-block ts-background-is-dark ts-separate-bg-element" data-bg-image="{% static 'assets/img/bg-desk.jpg' %}" data-bg-image-opacity=".1" data-bg-color="#1f1f1f" data-mask-bottom-wn-color="#000">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h3>Contact Us</h3>
+                            <address>
+                                <figure>
+                                    2590 Rocky Road
+                                    <br>
+                                    Philadelphia, PA 19108
+                                </figure>
+                                <br>
+                                <figure>
+                                    <div class="font-weight-bold">Email:</div>
+                                    <a href="#">office@example.com</a>
+                                </figure>
+                                <figure>
+                                    <div class="font-weight-bold">Phone:</div>
+                                    +1 215-606-0391
+                                </figure>
+                                <div class="font-weight-bold">Skype:</div>
+                                startups.agency
+                            </address>
+                            <!--end address-->
+                        </div>
+                        <!--end col-md-4-->
+                        <div class="col-md-8">
+                            <h3>Contact Form</h3>
+                            <form id="form-contact" method="post" class="clearfix ts-form ts-form-email ts-inputs__transparent" >
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6">
+                                        <div class="form-group">
+                                            <label for="form-contact-name">Your Name *</label>
+                                            <input type="text" class="form-control" id="form-contact-name" name="name" placeholder="Your Name" required>
+                                        </div>
+                                        <!--end form-group -->
+                                    </div>
+                                    <!--end col-md-6 col-sm-6 -->
+                                    <div class="col-md-6 col-sm-6">
+                                        <div class="form-group">
+                                            <label for="form-contact-email">Your Email *</label>
+                                            <input type="email" class="form-control" id="form-contact-email" name="email" placeholder="Your Email" required>
+                                        </div>
+                                        <!--end form-group -->
+                                    </div>
+                                    <!--end col-md-6 col-sm-6 -->
+                                </div>
+                                <!--end row -->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="form-contact-message">Your Message *</label>
+                                            <textarea class="form-control" id="form-contact-message" rows="5" name="message" placeholder="Your Message" required></textarea>
+                                        </div>
+                                        <!--end form-group -->
+                                    </div>
+                                    <!--end col-md-12 -->
+                                </div>
+                                <!--end row -->
+                                <div class="form-group clearfix">
+                                    <button type="submit" class="btn btn-primary float-right" id="form-contact-submit">Send a Message</button>
+                                </div>
+                                <!--end form-group -->
+                                <div class="form-contact-status"></div>
+                            </form>
+                            <!--end form-contact -->
+                        </div>
+                    </div>
+                    <!--end row-->
+                </div>
+                <!--end container-->
+            </section>
+
+            <div class="text-center text-white pb-5" data-bg-color="#000">
+                <small>Summarize It © 2021</small>
+            </div>
+        </footer>
+        <!--end #footer-->
+    </div>
+    <!--end page-->
+
+    <script>
+        if( document.getElementsByClassName("ts-full-screen").length ) {
+            document.getElementsByClassName("ts-full-screen")[0].style.height = window.innerHeight + "px";
+        }
+    </script>
+	<script src="{% static 'assets/js/jquery-3.3.1.min.js' %}"></script>
+	<script src="{% static 'assets/js/popper.min.js' %}"></script>
+	<script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/imagesloaded.pkgd.min.js' %}"></script>
+	<script src="{% static 'assets/js/isInViewport.jquery.js' %}"></script>
+	<script src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+	<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'assets/js/scrolla.jquery.min.js' %}"></script>
+	<script src="{% static 'assets/js/jquery.validate.min.js' %}"></script>
+	<script src="{% static 'assets/js/jquery-validate.bootstrap-tooltip.min.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+
+    <!--Google map-->
+
+
+
+</body>
+</html>

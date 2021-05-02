@@ -1,0 +1,192 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Summarize It{% endblock %}
+
+
+{% block header %}
+<!--HERO CONTENT ****************************************************************************************-->
+            <div class="container align-self-center align-items-center text-center">
+                <h3 class="ts-opacity__50">Make Your Life Easy</h3>
+                <h1>Summarize Your Legal Document</h1>
+                <a href="{% url 'account_signup' %}" class="btn btn-primary btn-lg ts-scroll">Submit Your PDF</a>
+            </div>
+            <!--end container-->
+
+            <div class="ts-background" data-bg-color="#000" data-bg-parallax="scroll" data-bg-parallax-speed="3">
+                <div class="owl-carousel ts-hero-slider ts-parallax-element" data-owl-loop="1" data-owl-fadeout="1">
+                    <div class="ts-background-image ts-opacity__70" data-bg-image="{% static 'assets/img/bg-girl.jpg' %}"></div>
+                </div>
+            </div>
+{% endblock %}
+
+
+
+{% block content %}
+    
+    
+        <!--*********************************************************************************************************-->
+        <!--************ CONTENT ************************************************************************************-->
+        <!--*********************************************************************************************************-->
+        <main id="ts-content">
+
+            <!--WHAT YOU'LL GET *************************************************************************************-->
+            <section id="what-youll-get" class="ts-block text-center pt-4">
+                <div class="container">
+                    <div class="ts-title">
+                        <h2>How It Works</h2>
+                    </div>
+                    <!--end ts-title-->
+                    <div class="row">
+                        <div class="col-sm-6 col-md-4 col-xl-4">
+                            <figure data-animate="ts-fadeInUp">
+                                <figure class="icon mb-5 p-2">
+                                    <img src="{% static 'assets/img/idea.png' %}" alt="">
+                                    <div class="ts-svg" data-animate="ts-zoomInShort" data-bg-image="{% static 'assets/svg/organic-shape-01.svg' %}"></div>
+                                </figure>
+                                <h4>Sign Up</h4>
+                                <p>
+                                    Sign up for an account to manage your PDFs. You can upload as many PDF's as you want.
+                                </p>
+                            </figure>
+                        </div>
+                        <!--end col-xl-4-->
+                        <div class="col-sm-6 col-md-4 col-xl-4">
+                            <figure data-animate="ts-fadeInUp" data-delay="0.1s">
+                                <figure class="icon mb-5 p-2">
+                                    <img src="{% static 'assets/img/analytics.png' %}" alt="">
+                                    <div class="ts-svg" data-animate="ts-zoomInShort" data-bg-image="{% static 'assets/svg/organic-shape-02.svg' %}"></div>
+                                </figure>
+                                <h4>Send Us Your PDF</h4>
+                                <p>
+                                    Upload your document in PDF format. Our team will begin to review the document.
+                                </p>
+                            </figure>
+                        </div>
+                        <!--end col-xl-4-->
+                        <div class="col-sm-6 offset-sm-4 col-md-4 offset-md-0 col-xl-4">
+                            <figure data-animate="ts-fadeInUp" data-delay="0.2s">
+                                <figure class="icon mb-5 p-2">
+                                    <img src="{% static 'assets/img/cheque.png' %}" alt="">
+                                    <div class="ts-svg" data-animate="ts-zoomInShort" data-bg-image="{% static 'assets/svg/organic-shape-03.svg' %}"></div>
+                                </figure>
+                                <h4>Recieve Your Summary</h4>
+                                <p>
+                                    You will recieve your summary within a few business days. It's that simple!
+                                </p>
+                            </figure>
+                        </div>
+                        <!--end col-xl-4-->
+                    </div>
+                    <!--end row-->
+                </div>
+                <!--end container-->
+            </section>
+            <!--END HOW IT WORKS ************************************************************************************-->
+
+ 
+
+            <!--NUMBERS *********************************************************************************************-->
+            <section id="numbers" class="ts-block ts-background-is-dark ts-separate-bg-element" data-bg-image="{% static 'assets/img/bg-table.jpg' %}" data-bg-image-opacity=".5" data-bg-color="#2d2d2d" data-mask-top-nw-color="#f6f6f6" data-mask-bottom-wn-color="#fff">
+                <div class="container">
+                    <div class="ts-promo-numbers">
+                        <div class="row">
+                         
+                            <div class="col-sm-12">
+                                <div class="ts-promo-number text-center">
+                                    <h2 data-animate="ts-zoomIn" data-delay="0.2s">Get Your Document Now</h2>
+                                    <a href="{% url 'account_signup' %}" class="btn btn-primary">Submit Your PDF</a>
+                                    <span class="ts-promo-number-divider"></span>
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <!--end row-->
+                    </div>
+                    <!--end ts-promo-numbers-->
+                </div>
+                <!--end container-->
+            </section>
+            <!--END NUMBERS *****************************************************************************************-->
+
+            <!--ADVANCED FEATURES ***********************************************************************************-->
+            <section id="advanced-features" class="ts-block">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-xl-5" data-animate="ts-fadeInUp">
+                            <div class="ts-title">
+                                <h2>Why Choose Us</h2>
+                            </div>
+                            <!--end ts-title-->
+                            <p>
+                                We are a team of passionate lawyers ready to help you understand all that legal jargin. It is our job to summarize your document into easy terms that anybody can understand.
+                            </p>
+                            <ul class="ts-list-colored-bullets">
+                                <li>Easy To Read Summary</li>
+                                <li>Perfect For Legal Documents</li>
+                                <li>Fast & Easy Delivery</li>
+                            </ul>
+                        </div>
+                        <!--end col-xl-5-->
+                        <div class="col-md-7 col-xl-7 text-center" data-animate="ts-fadeInUp" data-delay="0.1s">
+                            <div class="px-3">
+                                <img src="{% static 'assets/img/image-device-01.jpg' %}" class="mw-100" alt="">
+                            </div>
+                        </div>
+                        <!--end col-xl-7-->
+                    </div>
+                    <!--end row-->
+                </div>
+                <!--end container-->
+            </section>
+
+            <!--PRICING *********************************************************************************************-->
+            <section id="pricing" class="ts-block ts-separate-bg-element" data-bg-image="{% static 'assets/img/bg-hand-mobile.jpg' %}" data-bg-color="#000" data-bg-image-opacity=".5" data-mask-top-nw-color="#fff" data-mask-bottom-wn-color="#1f1f1f">
+                <div class="container">
+                    <div class="ts-title text-center text-white">
+                        <h2>Affordable Prices</h2>
+                    </div>
+                    <!--end ts-title-->
+                    <div class="row no-gutters ts-cards-same-height">
+                        <!--Price Box Promoted-->
+                        <div class="col-sm-12 col-lg-12">
+                            <div class="card text-center ts-price-box ts-price-box__promoted" data-animate="ts-fadeInUp" data-delay="0.1s">
+                                <div class="card-header p-0" data-bg-color="#ff6a6a">
+                                    <h5 class="mb-0 py-3 text-white" data-bg-color="#e55f5f">PDF Summary</h5>
+                                    <div class="ts-title text-white py-5 mb-0">
+                                        <h3 class="mb-0 font-weight-normal">
+                                            <sup>$</sup>2.00
+                                        </h3>
+                                        <small class="ts-opacity__50">per page</small >
+                                    </div>
+                                </div>
+                                <!--end card-header-->
+                                <div class="card-body p-0">
+                                    <ul class="list-unstyled ts-list-divided">
+                                        <li>Full Document Summary</li>
+                                        <li>Easy To Read</li>
+                                        <li>Fast Delivery</li>
+                                    </ul>
+                                    <!--end list-->
+                                </div>
+                                <!--end card-body-->
+                                <div class="card-footer bg-transparent pt-0 ts-border-none">
+                                    <a href="{% url 'account_signup' %}" class="btn btn-primary">Sign Up Now</a>
+                                </div>
+                            </div>
+                            <!--end card-->
+                        </div>
+                        <!--end price-box col-md-4-->
+
+            
+                    </div>
+                    <!--end row-->
+                </div>
+                <!--end container-->
+            </section>
+            <!--END PRICING *****************************************************************************************-->
+
+        </main>
+        <!--end #content-->
+
+
+{% endblock %}

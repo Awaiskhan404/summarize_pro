@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ listviewpdf.name }}{% endblock %}
+
+
+
+{% block header %}
+<!--HERO CONTENT ****************************************************************************************-->
+<div class="container align-self-center align-items-center text-center">
+    <div style="border-radius: 25px; padding-bottom: 2em; padding-top: 2em; background-color: rgb(255 255 255 / 68%);">
+        <h1 style = "font-weight: bold; color: #353535;">Checkout</h1>
+            <h3 style="color: #353535;">{{ listviewpdf.name }}</h3>
+            <p style="color: black;">Number of Pages: {{ listviewpdf.number_page }}</p>
+            <p style="color: black;">Price: {{ listviewpdf.total_price }}</p>
+        <div style="margin-top: 5opx;" id="paypal-button-container"></div>
+    </div>
+</div>
+<!--end container-->
+
+
+
+<div class="ts-background" data-bg-color="#000" data-bg-parallax="scroll" data-bg-parallax-speed="3" data-mask-bottom-wn-color="#1f1f1f">
+    <div class="owl-carousel ts-hero-slider ts-parallax-element" data-owl-loop="1" data-owl-fadeout="1">
+        <div class="ts-background-image ts-opacity__70" data-bg-image="{% static 'assets/img/bg-girl.jpg' %}"></div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+{% block content %}
+
+
+
+<script src="https://www.paypal.com/sdk/js?client-id=AVFX5UoJ2dQJaqKPgfc3crfDcy_rEaa5u28nQkmagJ3RyoHPr4AzFSufXPlUGa6rphXxLFXCv6spP1sP"> // Required. Replace YOUR_CLIENT_ID with your sandbox client ID.</script>
+
+
+
+
+<script>
+    var PAYPAL_CLIENT = 'AVFX5UoJ2dQJaqKPgfc3crfDcy_rEaa5u28nQkmagJ3RyoHPr4AzFSufXPlUGa6rphXxLFXCv6spP1sP';
+    var PAYPAL_SECRET = 'EK3VCrg8fPx7Y0usGy7YfkLsB0U7VGed2RxkcVlIdDIGKckynvqq8PBVHjiZ7xM6w-QTQGj6zQh7Buaz';
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    const csrftoken = getCookie('csrftoken');
+    var acepted = {{ listviewpdf.id }};
+    var url = {% url 'payment' %};
+        function completedorder() {
+            fetch(url, {
+                method: 'POST',
+                hearders: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken,
+                },
+                body: JSON.stringify({ 'acepted': acepted})
+
+            })
+        }
+
+    paypal.Buttons({
+        createOrder: function (data, actions) {
+            // This function sets up the details of the transaction, including the amount and line item details.
+            return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        value: {{ listviewpdf.total_price }}
+                }
+    }]
+        });
+    },
+    onApprove: function (data, actions) {
+        // This function captures the funds from the transaction.
+        return actions.order.capture().then(function (details) {
+            // This function shows a transaction success message to your buyer.
+            completedorder()
+            alert('Transaction completed by ' + details.payer.name.given_name);
+        });
+    }
+}).render('#paypal-button-container');
+//This function displays Smart Payment Buttons on your web page.
+</script>
+{% endblock %}

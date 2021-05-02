@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Sign Up{% endblock %}
+{% block header %}
+<!--HERO CONTENT ****************************************************************************************-->
+            <div class="container align-self-center align-items-center text-center ">
+                <h3 class="ts-opacity__80">Make Your Life Easy</h3>
+                <h1>Sign Up To Submit Your PDF</h1>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button class="btn btn-success btn-primary btn-lg ts-scroll" type="submit">Sign Up</button>
+                </form>
+            </div>
+            <!--end container-->
+
+            <div class="ts-background" data-bg-color="#000" data-bg-image-opacity=".5" data-mask-top-nw-color="#000" data-mask-bottom-wn-color="#000" data-bg-parallax="scroll" data-bg-parallax-speed="3">
+                <div class="owl-carousel ts-hero-slider ts-parallax-element" data-owl-loop="1" data-owl-fadeout="1">
+                    <div class="ts-background-image ts-opacity__70" data-bg-image="{% static 'assets/img/bg3.jpg' %}"></div>
+                </div>
+            </div>
+{% endblock %}
+{% block content %}
+{% endblock %}
